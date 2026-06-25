@@ -1,106 +1,152 @@
-📌 Smart Attendance System
-A real-time attendance management system with secure user registration, login, and role-based access control using MongoDB and JWT authentication.
+# Smart Attendance System
 
-🚀 Features
-Real-time user registration with MongoDB
+### 🚀 Overview
 
-JWT-based authentication for secure sessions
+A **real-time Attendance Management System** built with **.NET 8, MongoDB, JWT Authentication, and Role-Based Access Control (RBAC)**. The system enables secure user management, attendance tracking, and department administration with a scalable architecture.
 
-Role-based access control (Admin, Employee, Student)
+---
 
-Department management
+## ✨ Key Features
 
-Attendance tracking with user-specific records
+🔐 **Secure Authentication**
 
-Prisma-like ORM layer for MongoDB operations
+* User Registration & Login
+* JWT-based Authentication
+* Password Hashing & Secure Session Management
 
-🛠️ Prerequisites
-.NET 8+ SDK
+👥 **Role-Based Access Control**
 
-Node.js 18+
+* **Admin** – Manage users, departments, and attendance records
+* **Employee** – Mark and view attendance
+* **Student** – Track personal attendance records
 
-MongoDB (Local or Atlas)
+🏢 **Department Management**
 
-⚙️ Setup Instructions
-1️⃣ MongoDB Setup
-Option A: MongoDB Atlas (Cloud - Recommended)
+* Create and manage departments
+* Assign users to departments
 
-Sign up at MongoDB Atlas
+🕒 **Attendance Tracking**
 
-Create a free cluster
+* Real-time attendance marking
+* User-specific attendance history
+* Attendance record management
 
-Copy your connection string (format: mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/)
+🗄️ **MongoDB Integration**
 
-Update .env file with your connection string
+* Efficient NoSQL database storage
+* Prisma-like ORM layer for database operations
 
-Option B: MongoDB Local
+---
 
-Download MongoDB Community Server
+## 🛠️ Tech Stack
 
-Install and start MongoDB service
+**Backend:** .NET 8, ASP.NET Core Web API
+**Database:** MongoDB
+**Authentication:** JWT (JSON Web Tokens)
+**Frontend:** React.js, Vite
+**ORM Layer:** Custom MongoDB Repository Pattern
 
-Default connection: mongodb://localhost:27017/SmartAttendance
+---
 
-2️⃣ Environment Variables
-Create a .env file in the project root:
+## ⚙️ Installation & Setup
 
-env
+### 1️⃣ Configure MongoDB
+
+#### Option A: MongoDB Atlas (Recommended)
+
+* Create a cluster in MongoDB Atlas
+* Obtain the connection string
+* Update the `.env` file
+
+#### Option B: Local MongoDB
+
+```env
 MONGO_URI=mongodb://localhost:27017/SmartAttendance
-JWT_SECRET=ThisIsAVerySecureKeyForSmartAttendanceSystem12345!
+JWT_SECRET=YourSecureJWTSecretKey
 PORT=5000
-3️⃣ Run the Backend
-bash
+```
+
+### 2️⃣ Start Backend
+
+```bash
 cd backend/SmartAttendance.API
 dotnet run
-4️⃣ Run the Frontend
-bash
+```
+
+### 3️⃣ Start Frontend
+
+```bash
 cd frontend
 npm install
 npm run dev
-📡 API Endpoints
-🔐 Authentication
-POST /api/auth/register → Register a new user
+```
 
-POST /api/auth/login → Login and get JWT token
+---
 
-👤 Users
-GET /api/users → Get all users
+## 📡 API Endpoints
 
-GET /api/users/{id} → Get user by ID
+### 🔐 Authentication
 
-PUT /api/users/{id} → Update user
+* `POST /api/auth/register` → Register User
+* `POST /api/auth/login` → Login & Generate JWT
 
-DELETE /api/users/{id} → Delete user
+### 👤 User Management
 
-🕒 Attendance
-GET /api/attendance → Get all attendance records
+* `GET /api/users` → Fetch All Users
+* `GET /api/users/{id}` → Fetch User by ID
+* `PUT /api/users/{id}` → Update User
+* `DELETE /api/users/{id}` → Delete User
 
-POST /api/attendance → Mark attendance
+### 🕒 Attendance
 
-GET /api/attendance/user/{userId} → Get user attendance
+* `GET /api/attendance` → Get Attendance Records
+* `POST /api/attendance` → Mark Attendance
+* `GET /api/attendance/user/{userId}` → User Attendance History
 
-🗄️ Database Schema
-Users Collection
-json
+---
+
+## 🗃️ Database Schema
+
+### Users Collection
+
+```json
 {
   "name": "string",
   "email": "string (unique)",
   "password": "string (hashed)",
-  "role": "Admin|Employee|Student",
+  "role": "Admin | Employee | Student",
   "department": "string"
 }
-📖 How It Works
-User registers and credentials are stored securely in MongoDB.
+```
 
-JWT token is generated on login for session management.
+---
 
-Role-based access ensures Admins can manage departments and employees, while Students/Employees can mark attendance.
+## 📖 System Workflow
 
-Attendance records are stored and retrieved in real time.
+1. User registers with secure credentials.
+2. Data is stored in MongoDB with encrypted passwords.
+3. User logs in and receives a JWT token.
+4. JWT verifies requests and maintains secure sessions.
+5. Role-based permissions control access to resources.
+6. Attendance records are stored and retrieved in real time.
 
-✅ Future Enhancements
-Dashboard with analytics (attendance trends, department stats)
+---
 
-Email/notification integration for absentees
+## 🎯 Future Enhancements
 
-Biometric/QR code support for marking attendance
+📊 Attendance Analytics Dashboard
+📧 Email & Notification Integration
+📱 Mobile Application Support
+🔍 Advanced Reporting System
+📷 QR Code Based Attendance
+🖐️ Biometric Attendance Integration
+
+---
+
+### ⭐ Highlights
+
+✔ Secure JWT Authentication
+✔ Role-Based Authorization
+✔ Real-Time Attendance Tracking
+✔ MongoDB Integration
+✔ Scalable REST API Architecture
